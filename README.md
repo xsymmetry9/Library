@@ -1,2 +1,2 @@
 # Library
-A simple virtual library
+A simple virtual library from Odin Project
