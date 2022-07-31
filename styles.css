@@ -1,0 +1,129 @@
+body{
+    font-family: "Helvetica", "Arial", sans-serif;
+    color: #5D6063;
+    background-color: #EAEDF0;
+    font-size: 16px;
+    line-height: 1.3;
+    
+    margin:0px;
+    padding:0px;
+    max-width: 300vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.form-container{
+    position: absolute;
+    z-index: 1;
+    width: 300px;
+    padding: 45px;
+    background-color: #d4d4d4;
+    border-radius: 25px;
+}
+#add, #delete{
+    display: none;
+}
+.form-row{
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-items: flex-start;
+    margin-bottom: 20px;
+
+}
+
+.form-row input[type='text'], .form-row input[type="number"]{
+    background-color: #FFFFFF;
+    border: 1px solid #D6D9DC;
+    border-radius: 3px;
+    width: 250px;
+    padding: 7px;
+    font-size: 14px;
+    height: initial;
+  } 
+  
+  .form-row label {
+    text-align: right;
+    width: 120px;
+    margin-top: 7px;
+    padding-right: 20px;
+      }  
+
+  
+  /* Button Section */
+  .form-row-button{
+    display: flex;
+    justify-content: space-between;
+  } 
+
+  .form-row-button button {
+    font-size: 16px;
+    font-weight: bold;
+  
+    color: #FFFFFF;
+    background-color: #5995DA;
+  
+    border: none;
+    border-radius: 3px;
+  
+    padding: 10px 40px;
+    cursor: pointer;
+    justify-self: center;
+    
+}
+  
+  .form-row-button button:hover {
+    background-color: #76AEED;
+  }
+  
+  .form-row-button button:active {
+    background-color: #407FC7;
+  }
+
+
+/* Library Section */
+.library-container{
+    position: relative; 
+    width: 100%;
+}
+
+.myBooks{
+    padding: 0px 10px;
+    display: grid;
+    gap: 10px;
+}
+.card{
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: #ccc;
+    width: 250px;
+/* 
+    display: flex;
+    flex-direction: column; */
+}
+
+.card h1,h3,p{
+    padding-left: 20px;
+}
+
+.card .title-book{
+    border-bottom: 1px solid black;
+}
+
+.card .delete-button{
+  font-size: 12px;
+  font-weight: bold;
+
+  color: #FFFFFF;
+  background-color: #5995DA;
+  border: none;
+  border-radius: 3px;
+
+  padding: 5px 5px;
+  cursor: pointer;
+  float: right;
+  width: 25%;
+  margin: 0px 20px 20px 0px;
+}
