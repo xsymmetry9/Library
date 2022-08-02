@@ -1,4 +1,4 @@
-let myLibrary = [];
+const myLibrary = [];
 
 function Book(name, author, pages){
     this.name = name;
@@ -29,6 +29,7 @@ function addBookToLibrary(){
         //Add text to title
         const h3 = document.createElement('h3');
         h3.classList.add("title-book");
+        h3.setAttribute('id',`card-title-${index}`);
         h3.textContent = element.name;
         getCardId.appendChild(h3);
 
@@ -49,7 +50,7 @@ function addBookToLibrary(){
 
         let createButton = document.createElement('button')
         createButton.classList.add("delete-button");
-        createButton.setAttribute('id',`card-button-${index}`)
+        createButton.setAttribute('id',`${index}`)
         createButton.textContent ="Del";
         getCardId.appendChild(createButton);
     });
@@ -70,17 +71,18 @@ getForm.addEventListener(("click"),()=>{
 // });
 
 var deleteCards = document.querySelectorAll(".delete-button");
-console.log(deleteCards);
 
+function getBook(index){
+    return myLibrary[index];
+}
 deleteCards.forEach((button) =>{ 
     button.addEventListener(("click"),() =>{
-        const getBtnId = document.getElementById(button.id);
-        const div = getBtnId.parentNode;
-        console.log(div);
-        console.log("This is a button" + " " + button.id);
+        button.parentNode.remove();
+        console.log(myLibrary.indexOf(getBook(button.id)));        
     });
 
 });
+
 
 // Book.prototype.info = function()
 // {
