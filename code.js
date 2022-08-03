@@ -50,9 +50,15 @@ function addBookToLibrary(){
 
         let createButton = document.createElement('button')
         createButton.classList.add("delete-button");
-        createButton.setAttribute('id',`${index}`)
+        createButton.setAttribute('id',`${index}`);
         createButton.textContent ="Del";
         getCardId.appendChild(createButton);
+
+        let createReadBtn = document.createElement('button');
+        createReadBtn.classList.add("read");
+        createReadBtn.setAttribute('id',`${index}`);
+        createReadBtn.textContent="Read";
+        getCardId.appendChild(createReadBtn);
     });
 }
 addBookToLibrary();
@@ -78,10 +84,18 @@ function getBook(index){
 deleteCards.forEach((button) =>{ 
     button.addEventListener(("click"),() =>{
         button.parentNode.remove();
-        console.log(myLibrary.indexOf(getBook(button.id)));        
+        myLibrary.splice(button.id, 1);
+        console.log(myLibrary);      
     });
-
 });
+
+var readBtns = document.querySelectorAll(".read");
+readBtns.forEach((button) =>{
+    button.addEventListener(("click"),()=>{
+        console.log(button.id);
+    })
+})
+
 
 
 // Book.prototype.info = function()
