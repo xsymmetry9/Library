@@ -1,9 +1,10 @@
 const myLibrary = [];
 
-function Book(name, author, pages){
+function Book(name, author, pages,read){
     this.name = name;
     this.author = author;
     this.pages = pages;
+    this.read = read
 }
 
 const book1 = new Book("The Hobbit","J.R.R. Tolkien", 295);
@@ -51,13 +52,15 @@ function addBookToLibrary(){
         let createButton = document.createElement('button')
         createButton.classList.add("delete-button");
         createButton.setAttribute('id',`${index}`);
+        createButton.setAttribute('value',`${element.name}`)
         createButton.textContent ="Del";
         getCardId.appendChild(createButton);
 
         let createReadBtn = document.createElement('button');
-        createReadBtn.classList.add("read");
+        createReadBtn.classList.add("read-button");
         createReadBtn.setAttribute('id',`${index}`);
-        createReadBtn.textContent="Read";
+        createReadBtn.textContent="unread";
+        createReadBtn.setAttribute('value',`${element.name}`);
         getCardId.appendChild(createReadBtn);
     });
 }
@@ -71,32 +74,57 @@ getForm.addEventListener(("click"),()=>{
     add.style.display ="block";
 });
 
-// var addBookBtn = document.querySelector(".add-book");
-// getForm.addEventListener(("click"), function(e){
-//     console.log(e.value);
-// });
-
 var deleteCards = document.querySelectorAll(".delete-button");
 
-function getBook(index){
-    return myLibrary[index];
+function delBook(){
+    
 }
 deleteCards.forEach((button) =>{ 
-    button.addEventListener(("click"),() =>{
+    button.addEventListener(("click"),(e) =>{
         button.parentNode.remove();
-        myLibrary.splice(button.id, 1);
-        console.log(myLibrary);      
+        myLibrary.forEach((element,index)=>{
+            if (e.target.value == element.name)
+            {
+                myLibrary.splice(index,1);
+                console.log(myLibrary);
+            }
+        });       
+     
     });
 });
 
-var readBtns = document.querySelectorAll(".read");
+var readBtns = document.querySelectorAll(".read-button");
 readBtns.forEach((button) =>{
-    button.addEventListener(("click"),()=>{
-        console.log(button.id);
+    button.addEventListener(("click"),(e)=>{
+        myLibrary.forEach((book,index)=>{
+            var getBG = button.parentNode.querySelector('.card .read-button');
+            if(e.target.value == book.name)
+            {
+                myLibrary[index].isRead();
+                console.log(myLibrary[index].read);
+                if (myLibrary[index].read){
+                    getBG.style.backgroundColor="#5995DA";
+                }
+                else{
+                    getBG.style.backgroundColor="red";
+                }
+            }
+        });
     })
 })
 
-
+Book.prototype.isRead=function(){
+    if (this.read == null)
+    {
+        this.read = true;
+    }
+    else if(this.read){
+        this.read= false;
+    }
+    else{
+        this.read= true;
+    }
+}
 
 // Book.prototype.info = function()
 // {

@@ -129,14 +129,22 @@ body{
   font-size: 12px;
   font-weight: bold;
 
-  color: #FFFFFF;
-  background-color: #5995DA;
+
   border: none;
   border-radius: 3px;
+  color: #FFFFFF;
 
   padding: 5px 5px;
   cursor: pointer;
   float: right;
-  width: 25%;
+  width: 50px;
   margin: 0px 20px 20px 0px;
+}
+
+.card .delete-button{
+  background-color: #5995DA;
+}
+
+.card .read-button{
+  background-color: red;
 }
